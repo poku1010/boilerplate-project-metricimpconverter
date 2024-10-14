@@ -69,35 +69,34 @@ function ConvertHandler() {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-
     let result;
-
-    switch (initUnit) {
+  
+    switch(initUnit) {
       case 'gal':
-        result = initNum * galToL;
+        result = (initNum * galToL).toFixed(5); // 保留 5 位小數
         break;
       case 'L':
-        result = initNum / galToL;
-        break;
-      case 'mi':
-        result = initNum * miToKm;
-        break;
-      case 'km':
-        result = initNum / miToKm;
+        result = (initNum / galToL).toFixed(5); // 保留 5 位小數
         break;
       case 'lbs':
-        result = initNum * lbsToKg;
+        result = (initNum * lbsToKg).toFixed(5); // 保留 5 位小數
         break;
       case 'kg':
-        result = initNum / lbsToKg;
+        result = (initNum / lbsToKg).toFixed(5); // 保留 5 位小數
+        break;
+      case 'mi':
+        result = (initNum * miToKm).toFixed(5); // 保留 5 位小數
+        break;
+      case 'km':
+        result = (initNum / miToKm).toFixed(5); // 保留 5 位小數
         break;
       default:
         result = 'invalid unit';
     }
-
-    return result;
-  };
   
+    return parseFloat(result); // 將結果轉換回數字類型
+  };
+    
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     return result;
